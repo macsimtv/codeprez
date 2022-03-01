@@ -10,7 +10,9 @@ import envPath from '@/scripts/main.js';
 export default {
   name: 'UploadView',
   mounted() {
+    console.log(window.myApi.unzipFile())
     console.log(envPath);
+
   }
 }
 </script>
