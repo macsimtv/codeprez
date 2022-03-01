@@ -1,0 +1,11 @@
+:root {
+    --black: rgb(0, 0, 0);
+    --white: rgb(255, 255, 255);
+    --red: #760000;
+    --red-dark: #490000;
+}
+
+$black: var(--black);
+$white: var(--white);
+$red: var(--red);
+$red-dark: var(--red-dark);
