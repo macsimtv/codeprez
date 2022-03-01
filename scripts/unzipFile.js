@@ -2,10 +2,7 @@
 //const {homedir} = require('os');
 //import {homedir} from 'os'
 
-const { contextBridge } = require('electron')
-
-contextBridge.exposeInMainWorld('myAPI', {
-  unzipFile: (path = '/Users/romainbuisson/Documents/cours/B3/dev_dekstop/example-presentation.codeprez') => {
+function unzipFile (path = '/Users/romainbuisson/Documents/cours/B3/dev_dekstop/example-presentation.codeprez') {
     console.log(path)
     /*try {
         await extract(source, { dir: '' })
@@ -13,5 +10,6 @@ contextBridge.exposeInMainWorld('myAPI', {
       } catch (err) {
         console.error(err)
       }*/
-  }
-})
+}
+
+export default unzipFile;
