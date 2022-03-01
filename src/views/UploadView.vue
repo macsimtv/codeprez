@@ -62,6 +62,8 @@ export default {
 
       this.error = "";
       this.file = file.name;
+
+      this.$router.push('/presentation');
     }
   }
 }
