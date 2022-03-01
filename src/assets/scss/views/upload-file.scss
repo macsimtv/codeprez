@@ -1,5 +1,5 @@
 .upload {
-    background: linear-gradient(210.13deg, #450000 9.23%, #000000 153.32%);
+    background: linear-gradient(210.13deg, $red-dark 9.23%, $black 153.32%);
 }
 
 .choose-file {
@@ -101,6 +101,22 @@
 
                     border: 1px solid $white;
                 }
+            }
+
+            .error {
+                width: fit-content;
+
+                margin: 0 auto;
+                margin-top: 10px;
+                padding: 5px 15px;
+
+                color: $white;
+                background-color: $red;
+
+                font-weight: lighter;
+                font-size: .7rem;
+
+                border-radius: 999px;
             }
         }
 

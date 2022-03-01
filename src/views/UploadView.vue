@@ -19,8 +19,8 @@
                 <button @click="onClick">
                   Choisir un fichier
                 </button>
-                <p v-if="error" class="error">
-                  {{ error }}
+                <p v-if="error || file" class="error info">
+                  {{ error || file }}
                 </p>
               </div>
             </div>
@@ -38,7 +38,8 @@ export default {
   name: 'UploadView',
   data() {
     return {
-      error: ''
+      error: '',
+      file: ''
     }
   },
   methods: {
@@ -60,6 +61,7 @@ export default {
       }
 
       this.error = "";
+      this.file = file.name;
     }
   }
 }
