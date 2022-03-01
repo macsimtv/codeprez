@@ -1,16 +1,14 @@
 <template>
-  <div class="home">
-    <h1>
-      Home
-    </h1>
-  </div>
+  <main class="choose-file">
+    
+  </main>
 </template>
 
 <script>
 import envPath from '@/scripts/main.js';
 
 export default {
-  name: 'HomeView',
+  name: 'UploadView',
   mounted() {
     console.log(envPath);
   }
