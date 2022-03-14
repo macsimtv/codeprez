@@ -48,7 +48,10 @@ app.on('window-all-closed', () => {
 })
 
 ipcMain.on('toto', function (evt, message) {
-  const dialog = dialog.showOpenDialog({ properties: ['openFile'] })
+  dialog.showOpenDialog({ properties: ['openFile'] })
+  .then(result => {
+    console.log(result);
+  })
   console.log(dialog);
 });
 
