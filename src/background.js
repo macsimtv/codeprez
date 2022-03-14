@@ -47,12 +47,14 @@ app.on('window-all-closed', () => {
   }
 })
 
-ipcMain.on('toto', function (evt, message) {
-  dialog.showOpenDialog({ properties: ['openFile'] })
-  .then(result => {
-    console.log(result);
-  })
-  console.log(dialog);
+ipcMain.on('download', function (evt, message) {
+    dialog.showOpenDialog({ properties: ['openFile'] })
+    .then(result => {
+      if (!result.canceled){
+        evt.reply('downloadCbk', result.filePaths[0])
+      }
+    })
+  
 });
 
 app.on('activate', () => {
