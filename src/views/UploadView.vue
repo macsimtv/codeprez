@@ -44,8 +44,8 @@ export default {
   },
   methods: {
     onClick() {
-      window.myApi.unzipFile()
-      document.querySelector('#file').click(); 
+      window.myApi.readFile()
+      //document.querySelector('#file').click(); 
     },
     onUpload(e) {
       // Selector
