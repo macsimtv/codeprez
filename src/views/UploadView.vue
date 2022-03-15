@@ -24,7 +24,7 @@
                 </p>
               </div>
             </div>
-            <input @click.prevent="onUpload" @change="onDrag" class="choose-file__input" type="file" id="file"></label>
+            <input @change="onDrag" class="choose-file__input" type="file" id="file"></label>
         </div>
       </div>
     </section>
@@ -46,9 +46,9 @@ export default {
     onClick() {
       document.querySelector('#file').click(); 
     },
-    onUpload() {
-      window.myApi.readFile()
-    },
+    // onUpload(e) {
+    //   window.myApi.readFile(e.target.files[0].path);
+    // },
     onDrag(e) {
       window.myApi.readFile(e.target.files[0].path);
     }
