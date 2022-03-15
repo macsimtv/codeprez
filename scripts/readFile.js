@@ -5,6 +5,11 @@ import unzipFile from './unzipFile'
 
 function readFile (path) {
     if (!path) return ipcRenderer.send('download')
+
+    let extension = path.split('.');
+
+    if(extension[extension.length - 1] !== 'codeprez') return console.log('Not a codeprez extension');
+
     unzipFile(path)
 }
 

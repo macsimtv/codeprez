@@ -16,7 +16,7 @@
                 <p class="choose-file__label__separator">
                   ou
                 </p>
-                <button @click="onClick">
+                <button @click.prevent="onClick">
                   Choisir un fichier
                 </button>
                 <p v-if="error || file" class="error info">
@@ -24,7 +24,7 @@
                 </p>
               </div>
             </div>
-            <input @change="onUpload" class="choose-file__input" type="file" id="file"></label>
+            <input @click.prevent="onUpload" @change="onDrag" class="choose-file__input" type="file" id="file"></label>
         </div>
       </div>
     </section>
@@ -44,27 +44,13 @@ export default {
   },
   methods: {
     onClick() {
-      window.myApi.readFile()
-      //document.querySelector('#file').click(); 
+      document.querySelector('#file').click(); 
     },
-    onUpload(e) {
-      // Selector
-      let file = e.target.files[0];
-      let input = document.querySelector('#file');
-
-      // Regex
-      let er = /^.+\.(codeprez)$/i;
-
-      // Wrong Format
-      if(!er.test(file.name)) {
-        this.error = 'Mauvais format';
-        return input.value = "";
-      }
-
-      this.error = "";
-      this.file = file.name;
-
-      this.$router.push('/presentation');
+    onUpload() {
+      window.myApi.readFile()
+    },
+    onDrag(e) {
+      window.myApi.readFile(e.target.files[0].path);
     }
   }
 }
