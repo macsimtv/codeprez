@@ -43,6 +43,7 @@ export default {
         let data = await window.myApi.readFile(e.target.files[0].path);
 
         if(data) {
+          this.$router.push('/presentation');
           // Nouvel fenetre
           this.error = '';
         } else {
