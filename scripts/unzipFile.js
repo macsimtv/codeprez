@@ -27,7 +27,6 @@ async function unzipFile(source, destination) {
 
 ipcRenderer.on("unzipFileCbk", (event, res) => {
   if (res) {
-    console.log(res);
     unzipFile(res.source, res.destination);
   }
 });

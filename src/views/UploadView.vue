@@ -38,8 +38,18 @@ export default {
     onClick() {
       document.querySelector('#file').click();
     },
-    onDrag(e) {
-      if(e.target.files.length) window.myApi.readFile(e.target.files[0].path);
+    async onDrag(e) {
+      if(e.target.files.length) {
+        let data = await window.myApi.readFile(e.target.files[0].path);
+
+        if(data) {
+          // Nouvel fenetre
+          this.error = '';
+        } else {
+          // Error
+          this.error = 'Une erreur est survenue';
+        }
+      }
     }
   }
 }
