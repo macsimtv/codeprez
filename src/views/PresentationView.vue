@@ -14,8 +14,21 @@
 import Flickity from "flickity";
 
 export default {
+  data() {
+    return {
+      presentationData: []
+    }
+  },
   mounted() {
+    this.presentationData = this.getPresentationData();
+    console.log(this.presentationData);
+
     new Flickity(document.querySelector(".main-carousel"));
   },
+  methods: {
+    async getPresentationData() {
+      return await window.myApi.getPresentationData();
+    }
+  }
 };
 </script>
