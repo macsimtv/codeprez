@@ -57,6 +57,10 @@ ipcMain.on('download', function (evt, message) {
   
 });
 
+ipcMain.on('unzipFile', function (evt, message) {
+    evt.reply('unzipFileCbk', {destination: app.getPath("temp"), source: message})
+});
+
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.

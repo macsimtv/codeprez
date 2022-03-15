@@ -1,10 +1,11 @@
 const fs = require('fs');
 const promisify = require('util').promisify
 const { ipcRenderer } = require('electron')
+import unzipFile from './unzipFile'
 
 function readFile (path) {
     if (!path) return ipcRenderer.send('download')
-    console.log(path)
+    unzipFile(path)
 }
 
 
