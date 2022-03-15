@@ -38,16 +38,8 @@ export default {
     onClick() {
       document.querySelector('#file').click();
     },
-    async readFile(path) {
-      console.log('bim bam boom')
-     const res = await window.myApi.readFile(path)
-     console.log(res)
-    },
-    // onUpload(e) {
-    //   window.myApi.readFile(e.target.files[0].path);
-    // },
     onDrag(e) {
-      this.readFile(e.target.files[0].path);
+      if(e.target.files.length) window.myApi.readFile(e.target.files[0].path);
     }
   }
 }
