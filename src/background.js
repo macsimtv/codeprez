@@ -47,16 +47,6 @@ app.on('window-all-closed', () => {
   }
 })
 
-ipcMain.on('download', function (evt, message) {
-    dialog.showOpenDialog({ properties: ['openFile'] })
-    .then(result => {
-      if (!result.canceled){
-        evt.reply('downloadCbk', result.filePaths[0])
-      }
-    })
-  
-});
-
 ipcMain.on('unzipFile', function (evt, message) {
     evt.reply('unzipFileCbk', {destination: app.getPath("temp"), source: message})
 });

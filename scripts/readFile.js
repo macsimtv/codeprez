@@ -18,9 +18,4 @@ async function readFile (path) {
     return true;
 }
 
-
-ipcRenderer.on('downloadCbk', (event, res) => {
-    readFile(res)
-})
-
 export default readFile;
