@@ -4,7 +4,7 @@ const os = require('os');
 const { ipcRenderer } = require('electron')
 
 async function getPresentationData () {
-    console.log(os.tmpdir());
+    return os.tmpdir();
 }
 
 export default getPresentationData;

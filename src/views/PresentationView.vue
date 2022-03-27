@@ -19,8 +19,8 @@ export default {
       presentationData: []
     }
   },
-  mounted() {
-    this.presentationData = this.getPresentationData();
+  async mounted() {
+    this.presentationData = await this.getPresentationData();
     console.log(this.presentationData);
 
     new Flickity(document.querySelector(".main-carousel"));
