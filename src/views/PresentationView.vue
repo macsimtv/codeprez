@@ -21,13 +21,23 @@ export default {
   },
   async mounted() {
     this.presentationData = await this.getPresentationData();
-    console.log(this.presentationData);
-
+    this.injectStyle(this.presentationData.style)
+    this.injectScript(this.presentationData.env)
     new Flickity(document.querySelector(".main-carousel"));
   },
   methods: {
     async getPresentationData() {
       return await window.myApi.getPresentationData();
+    },
+    injectStyle(styles){
+      const style = document.createElement("style");
+      style.innerText = styles
+      document.head.appendChild(style)
+    },
+    injectScript(scripts){
+      const script = document.createElement("script");
+      script.innerText = scripts
+      document.head.appendChild(script)
     }
   }
 };
