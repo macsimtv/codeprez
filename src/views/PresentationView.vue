@@ -1,13 +1,8 @@
 <template>
   <div class="presentation view view--hidden">
-    <!-- <carousel :arrows="true" class="slider main-carousel">
-        <slide class="carousel-cell" v-for="data, index of slideData" :key="index">
-            <div class="slider-cell" v-html="markedParse(data)"></div>
-        </slide>
-    </carousel> -->
     <main class="carousel">
-      <section class="carousel-cell" v-for="data, index of slideData" :key="index">
-        <div class="carousel-slide" :class="{ 'active': index == activeSlider }" v-html="markedParse(data)"></div>
+      <section class="carousel-cell" :class="{ 'active': index == activeSlider }" v-for="data, index of slideData" :key="index">
+        <div class="carousel-slide" v-html="markedParse(data)"></div>
       </section>
       <div class="carousel-arrows">
         <span class="carousel-arrow carousel-prev" @click="prevSlide">
@@ -21,6 +16,7 @@
 
 <script>
 import { marked } from "marked";
+import hljs from 'highlight.js';
 
 export default {
   data() {
@@ -36,6 +32,8 @@ export default {
     this.slideData = this.presentationData.presentation;
     this.injectStyle(this.presentationData.style)
     this.injectScript(this.presentationData.env)
+
+    hljs.highlightAll();
   },
   methods: {
     async getPresentationData() {

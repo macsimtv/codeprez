@@ -5460,6 +5460,11 @@ highlight.js@^10.7.1:
   resolved "https://registry.npmjs.org/highlight.js/-/highlight.js-10.7.3.tgz"
   integrity sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==
 
+highlight.js@^11.5.0:
+  version "11.5.0"
+  resolved "https://registry.npmjs.org/highlight.js/-/highlight.js-11.5.0.tgz"
+  integrity sha512-SM6WDj5/C+VfIY8pZ6yW6Xa0Fm1tniYVYWYW1Q/DcMnISZFrC3aQAZZZFAAZtybKNrGId3p/DNbFTtcTXXgYBw==
+
 hmac-drbg@^1.0.1:
   version "1.0.1"
   resolved "https://registry.npmjs.org/hmac-drbg/-/hmac-drbg-1.0.1.tgz"
@@ -9965,7 +9970,7 @@ vue-template-es2015-compiler@^1.9.0:
 
 vue3-carousel@^0.1.38:
   version "0.1.38"
-  resolved "https://registry.yarnpkg.com/vue3-carousel/-/vue3-carousel-0.1.38.tgz#dbd832ef7eb936d1e699cabc83d34472787174f2"
+  resolved "https://registry.npmjs.org/vue3-carousel/-/vue3-carousel-0.1.38.tgz"
   integrity sha512-mTWvlyFIu2QqnMbHiphdJWKRBaPHG8oXr5fcRWjvnPwcQ3XCpI9/FLDI/l1vVBCs13hBSuKp/kYleuxs2WOoKA==
 
 vue@^3.2.13:
