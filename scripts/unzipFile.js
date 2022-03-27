@@ -1,14 +1,15 @@
 const extract = require("extract-zip");
 const { ipcRenderer } = require("electron");
 const path = require("path");
+const os = require('os');
 const fs = require("fs");
 const promisify = require("util").promisify;
 const deleteDir = promisify(fs.rmdir);
 
-async function unzipFile(source, destination) {
+async function unzipFile(source) {
   if (!source) return false;
-  if (!destination) return ipcRenderer.send("unzipFile", source);
-  destination = path.resolve(path.join(destination, "codeprez"));
+
+  const destination = path.resolve(path.join(os.tmpdir(), "codeprez"));
   try {
     await deleteDir(destination, { recursive: true, force: true });
   } catch (error) {
@@ -24,11 +25,5 @@ async function unzipFile(source, destination) {
   }
   return true;
 }
-
-ipcRenderer.on("unzipFileCbk", (event, res) => {
-  if (res) {
-    unzipFile(res.source, res.destination);
-  }
-});
 
 export default unzipFile;
