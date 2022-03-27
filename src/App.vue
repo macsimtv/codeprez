@@ -1,16 +1,6 @@
 <template>
-    <router-view @keydown.esc="onEsc"/>
+    <router-view/>
 </template>
-
-<script>
-export default {
-  methods: {
-    onEsc() {
-      window.myApi.noFullscreen();
-    }
-  },
-}
-</script>
 
 <style lang="scss">
 @import './assets/scss/main.scss';
