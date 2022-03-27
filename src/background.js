@@ -46,8 +46,12 @@ app.on('window-all-closed', () => {
   }
 })
 
-ipcMain.on('unzipFile', function (evt, message) {
-    evt.reply('unzipFileCbk', {destination: app.getPath("temp"), source: message})
+ipcMain.on('fullscreen', function (evt, message) {
+  BrowserWindow.getFocusedWindow().setFullScreen(true)
+});
+
+ipcMain.on('noFullscreen', function (evt, message) {
+  BrowserWindow.getFocusedWindow().setFullScreen(false)
 });
 
 app.on('activate', () => {

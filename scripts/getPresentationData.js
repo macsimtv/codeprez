@@ -22,7 +22,7 @@ async function getPresentationData () {
         }else if(item.endsWith(".css")){
             template.assets.css.push(await fsPromises.readFile(path.join(accessPath, "assets", item), "utf8"))
         }else {
-            template.assets.images.push(path.join(accessPath, "assets", item))
+            template.assets.images.push(await fsPromises.readFile(path.join(accessPath, "assets", item), "base64"))
         }    
     }
 

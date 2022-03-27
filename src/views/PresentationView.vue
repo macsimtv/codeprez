@@ -31,8 +31,11 @@ export default {
     };
   },
   async mounted() {
+    window.myApi.fullscreen();
     this.presentationData = await this.getPresentationData();
     this.slideData = this.presentationData.presentation;
+    this.injectStyle(this.presentationData.style)
+    this.injectScript(this.presentationData.env)
   },
   methods: {
     async getPresentationData() {
@@ -50,6 +53,16 @@ export default {
       if(this.activeSlider < (this.slideData.length - 1)) {
         this.activeSlider++;
       }
+    },
+    injectStyle(styles){
+      const style = document.createElement("style");
+      style.innerText = styles
+      document.head.appendChild(style)
+    },
+    injectScript(scripts){
+      const script = document.createElement("script");
+      script.innerText = scripts
+      document.head.appendChild(script)
     }
   },
 };
