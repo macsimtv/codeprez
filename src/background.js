@@ -1,6 +1,6 @@
 'use strict'
 
-import { app, protocol, BrowserWindow, ipcMain, dialog } from 'electron'
+import { app, protocol, BrowserWindow, ipcMain, dialog, Tray } from 'electron'
 import { createProtocol } from 'vue-cli-plugin-electron-builder/lib'
 import installExtension, { VUEJS3_DEVTOOLS } from 'electron-devtools-installer'
 import path from 'path'
@@ -52,6 +52,10 @@ ipcMain.on('fullscreen', function (evt, message) {
 
 ipcMain.on('noFullscreen', function (evt, message) {
   BrowserWindow.getFocusedWindow().setFullScreen(false)
+});
+
+ipcMain.on('importImg', function (evt, img) {
+  console.log(new Tray(img))
 });
 
 app.on('activate', () => {
