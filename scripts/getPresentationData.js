@@ -1,8 +1,6 @@
 const fsPromises = require('fs').promises
-const promisify = require('util').promisify
 const os = require('os');
 const path = require("path");
-const { ipcRenderer } = require('electron')
 
 async function getPresentationData () {
     const accessPath = path.join(os.tmpdir(), "codeprez");
@@ -11,6 +9,7 @@ async function getPresentationData () {
     template.config = await fsPromises.readFile(path.join(accessPath, "config.json"), "utf8");
     template.style = await fsPromises.readFile(path.join(accessPath, "style.css"), "utf8");
     template.presentation = await fsPromises.readFile(path.join(accessPath, "presentation.md"), "utf8");
+    template.presentation = template.presentation.split("\n---\n");
     template.env = await fsPromises.readFile(path.join(path.join(accessPath, "env"), "index.js"), "utf8");
     const assets = await fsPromises.readdir(path.join(accessPath, "assets"), "utf8");
     template.assets = {}
