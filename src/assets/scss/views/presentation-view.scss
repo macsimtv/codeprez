@@ -68,6 +68,10 @@
 }
 
 .carousel-slide {
+    * {
+        text-align: center;
+    }
+
     h1 {
         font-size: 3rem;
         margin-bottom: 25px;
@@ -97,15 +101,18 @@
         flex: unset;
 
         overflow: auto;
+
+        * {
+            text-align: left;
+        }
     }
 
-    // pre {
-    //     padding: 10px;
+    ul, ol {
+        text-align: left;
 
-    //     background-color: #f0f0f0;
-
-    //     border: 1px solid #cacaca;
-    //     border-radius: 10px;
-    // }
+        * {
+            text-align: left;
+        }
+    }
 }
 
