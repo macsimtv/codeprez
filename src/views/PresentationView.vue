@@ -20,6 +20,7 @@ export default {
     }
   },
   async mounted() {
+    window.myApi.fullscreen();
     this.presentationData = await this.getPresentationData();
     this.injectStyle(this.presentationData.style)
     this.injectScript(this.presentationData.env)
