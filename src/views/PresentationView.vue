@@ -33,7 +33,12 @@ export default {
     this.injectStyle(this.presentationData.style)
     this.injectScript(this.presentationData.env)
 
-    hljs.highlightAll();
+    setTimeout(() => {
+      document.querySelectorAll('pre code').forEach(el => {
+        hljs.highlightElement(el);
+      })
+
+    }, 500)
   },
   methods: {
     async getPresentationData() {
