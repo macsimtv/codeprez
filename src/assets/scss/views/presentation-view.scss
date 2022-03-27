@@ -1,9 +1,14 @@
 .presentation {
-    background: linear-gradient(210.13deg, $red-dark 9.23%, $black 153.32%);
+    background-color: white;
+    * {
+        color: black;
+    }
+    // background: linear-gradient(210.13deg, $red-dark 9.23%, $black 153.32%);
 }
 
-.main-carousel {
+.carousel {
     width: 100%;
+    height: 100%;
 
     position: relative;
 }
@@ -12,45 +17,94 @@
     width: 100%;
     height: 100%;
 
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
 
     border: none;
 
     outline: none;
 }
 
-.slider {
+.carousel-slide {
+    width: 100%;
     height: 100%;
-}
-
-.flickity-page-dots {
-    display: none;
-
-    position: absolute;
-    left: 50%;
-    bottom: 10;
-
-    transform: translateX(-50%);
-}
-
-.flickity-button {
-    width: 50%;
-    height: 100%;
-
-    position: absolute;
-    top: 0;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 
     opacity: 0;
 
-    &.previous {
-        left: 0;
+    transition: opacity .4s ease-in-out;
+
+    &.active {
+        opacity: 1;
+    }
+}
+
+.carousel-arrows {
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    .carousel-arrow {
+        width: 50%;
+        height: 100%;
+
+        position: absolute;
+        z-index: 100;
+        top: 0;
+
+        &:nth-child(1) {
+            left: 0;
+        }
+    
+        &:nth-child(2) {
+            right: 0;
+        }
+    }
+}
+
+.carousel-slide {
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 25px;
+    }
+    
+    h2 { 
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+    
+    h3 {
+        font-size: 1.5rem;
+        margin-bottom: 25px;
     }
 
-    &.next {
-        right: 0;
+    a {
+        color: rgb(87, 87, 255);
+        text-decoration: underline;
+    }
+
+    p {
+        line-height: 150%;
+        margin-bottom: 15px;
+    }
+
+    pre {
+        padding: 10px;
+
+        background-color: #f0f0f0;
+
+        border: 1px solid #cacaca;
+        border-radius: 10px;
     }
 }
 

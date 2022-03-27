@@ -1,34 +1,56 @@
 <template>
-  <main class="presentation view view--hidden">
-    <section class="slider main-carousel">
-        <div class="carousel-cell" v-for="index of 20" :key="index">
-            <h1>
-                Slide {{ index }}
-            </h1>
-        </div>
-    </section>
-  </main>
+  <div class="presentation view view--hidden">
+    <!-- <carousel :arrows="true" class="slider main-carousel">
+        <slide class="carousel-cell" v-for="data, index of slideData" :key="index">
+            <div class="slider-cell" v-html="markedParse(data)"></div>
+        </slide>
+    </carousel> -->
+    <main class="carousel">
+      <section class="carousel-cell" v-for="data, index of slideData" :key="index">
+        <div class="carousel-slide" :class="{ 'active': index == activeSlider }" v-html="markedParse(data)"></div>
+      </section>
+      <div class="carousel-arrows">
+        <span class="carousel-arrow carousel-prev" @click="prevSlide">
+        </span>
+        <span class="carousel-arrow carousel-next" @click="nextSlide">
+        </span>
+      </div>
+    </main>
+  </div>
 </template>
 
 <script>
-import Flickity from "flickity";
+import { marked } from "marked";
 
 export default {
   data() {
     return {
-      presentationData: []
-    }
+      presentationData: [],
+      slideData: [],
+      activeSlider: 0
+    };
   },
   async mounted() {
     this.presentationData = await this.getPresentationData();
-    console.log(this.presentationData);
-
-    new Flickity(document.querySelector(".main-carousel"));
+    this.slideData = this.presentationData.presentation;
   },
   methods: {
     async getPresentationData() {
       return await window.myApi.getPresentationData();
+    },
+    markedParse(data) {
+      return marked.parse(data);
+    },
+    prevSlide() {
+      if(this.activeSlider > 0) {
+        this.activeSlider--;
+      }
+    },
+    nextSlide() {
+      if(this.activeSlider < (this.slideData.length - 1)) {
+        this.activeSlider++;
+      }
     }
-  }
+  },
 };
 </script>
