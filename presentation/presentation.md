@@ -1,4 +1,4 @@
-# Codeprez
+# Codeprez 👋
 
 ---
 
@@ -6,9 +6,11 @@
 
 Codeprez est une application electron qui permet de faire des présentations de type powerpoint avec un fichier readme.
 
+![Une image](./assets/codeprez_presentation.jpg)
+
 ---
 
-# 3. Sommaire
+# 3. Sommaire 📜
 
 - Démonstration
 - Code
@@ -18,39 +20,40 @@ Codeprez est une application electron qui permet de faire des présentations de 
 
 # 4. Démonstration
 
-Pour commencer la présentation utilise le logiciel codeprez que nous avons développé.
+Pour commencer la présentation utilise le logiciel codeprez que nous avons développé. 👨‍💻
 
 ---
 
 # 4. Démonstration
 
-Après avoir lancé l'application, il suffit d'importer ou de glisser un fichier sur la fenêtre.
-Une fois l'extraction du fichier, l'application se lance en fullscreen pour commencer la présentation.
+Après avoir lancé l'application, il suffit d'importer ou de glisser un fichier sur la fenêtre. 🧃
+
+Une fois l'extraction du fichier, l'application se lance en fullscreen pour commencer la présentation. 🖼️
+
+---
+
+# 4. Démonstration
+
+Démo installation + utilisation 🚀
+
+![Une image](./assets/codeprez_setup.jpg)
 
 ---
 
 # 5. Code
 
-Ceci devrait afficher une ligne pour la commande ainsi qu'un bouton pour l'exécuter et un bloc pour en voir le résulat
+Architecture de l'application
 
-```bash
-node index.js
-```
-
----
-
-Normalement, `Doing stuff...` s'est affiché, puis `Hello World!` une seconde plus tard dans lle bloc.
+![Une image](./assets/codeprez_architecture.jpg)
 
 ---
 
 # Conclusion
 
-Si tout s'est bien passé, bravo!
+Projet terminé !
 
-![gif](https://media.giphy.com/media/ZdUnQS4AXEl1AERdil/giphy.gif)
+![gif](https://f.hellowork.com/blogdumoderateur/2013/02/nyan-cat-gif-1.gif)
 
 ---
 
-# Merci d'avoir suivi cette présentation enrichissante !
-
-## Des questions ?
+# Des questions ?

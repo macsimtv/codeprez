@@ -37,6 +37,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    padding: 25px;
 }
 
 .carousel-arrows {
@@ -69,21 +71,23 @@
 
 .carousel-slide {
     * {
+        font-size: 2rem;
+
         text-align: center;
     }
 
     h1 {
-        font-size: 3rem;
+        font-size: 5rem;
         margin-bottom: 25px;
     }
     
     h2 { 
-        font-size: 2rem;
+        font-size: 4rem;
         margin-bottom: 25px;
     }
     
     h3 {
-        font-size: 1.5rem;
+        font-size: 3rem;
         margin-bottom: 25px;
     }
 

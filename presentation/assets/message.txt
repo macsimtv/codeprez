@@ -1,0 +1,113 @@
+// A vous de jouer!
+
+// Remplacez le code ci-dessous pour implémenter l'application telle qu'elle est décrite dans Readme.md
+
+const { app, BrowserWindow, Menu, dialog } = require("electron");
+const { path } = require("path");
+
+const createWindow = () => {
+  const win = new BrowserWindow({
+    width: 800,
+    height: 600,
+    minwidth: 800,
+    minheight: 600,
+    webPreferences: {
+      preload: path.join(__dirname, "front/main.js"),
+    },
+  });
+
+  win.loadFile("./front/index.html");
+};
+
+app.whenReady().then(() => {
+  createWindow();
+
+  app.on("activate", () => {
+    if (BrowserWindow.getAllWindows().length === 0) createWindow();
+  });
+});
+app.on("window-all-closed", () => {
+    if (process.platform !== "darwin") {
+      app.quit();
+    }
+  });
+
+  let appMenu = [
+    {
+      label: "Fichier",
+      submenu: [
+        {
+          label: "Ouvrir...",
+          accelerator: "Ctrl+O",
+          click: () => {
+              dialog.showOpenDialog(BrowserWindow.getFocusedWindow(), {
+                  properties: ["openFile", "multiSelections"],
+              });
+          },
+        },
+        {
+          label: "Enregister sous...",
+          accelerator: "Ctrl+S",
+          click: () => {
+            BrowserWindow.getFocusedWindow().webContents.send("save-file", {});
+          },
+        },
+        {
+          label: "Preview",
+          accelerator: "Ctrl+P",
+          click: () => {
+            createPreviewWindow(BrowserWindow.getFocusedWindow());
+          },
+        },
+        {
+          label: "Basculer le plein ecran",
+          accelerator: "F11",
+          click: () => {
+            const win = BrowserWindow.getFocusedWindow();
+            win.setFullScreen(!win.fullScreen);
+          },
+        },
+      ],
+    },
+    {
+      label: "Edition",
+      submenu: [
+        {
+          label: "Retour en arriere",
+          accelerator: "Ctrl+Z",
+          click: () => {
+            BrowserWindow.getFocusedWindow().webContents.undo();
+          },
+        },
+        {
+          label: "Retour en avant",
+          accelerator: "Ctrl+Y",
+          click: () => {
+            BrowserWindow.getFocusedWindow().webContents.redo();
+          },
+        },
+        {
+          label: "Copier",
+          accelerator: "Ctrl+c",
+          click: () => {
+            BrowserWindow.getFocusedWindow().webContents.pasteAndMatchStyle();
+          },
+        },
+        {
+          label: "Cut",
+          accelerator: "Ctrl+c",
+          click: () => {
+            BrowserWindow.getFocusedWindow().webContents.cut();
+          },
+        },
+      ],
+    },
+    {
+      label: "Deveoloppeur",
+      submenu: [
+        {
+          role: "toggleDevTools",
+        },
+      ],
+    },
+  ];
