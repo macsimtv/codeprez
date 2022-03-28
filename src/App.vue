@@ -9,6 +9,9 @@ export default {
       window.myApi.noFullscreen();
     }
   },
+  created() {
+    this.$router.push('/')
+  }
 }
 </script>
 
