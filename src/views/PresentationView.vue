@@ -31,15 +31,13 @@ export default {
     this.presentationData = await this.getPresentationData();
     this.slideData = this.presentationData.presentation;
     this.injectStyle(this.presentationData.style)
-    //this.injectScript(this.presentationData.env)
 
     setTimeout(() => {
       document.querySelectorAll('pre code').forEach(el => {
         hljs.highlightElement(el);
       })
-
+      this.injectScript('var process = {};process.exit = () => {};')
       this.checkInjectButton()
-
     }, 500)
   },
   methods: {
