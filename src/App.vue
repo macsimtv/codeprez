@@ -1,5 +1,5 @@
 <template>
-    <router-view @keydown.esc="onEsc"/>
+    <router-view/>
 </template>
 
 <script>
