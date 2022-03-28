@@ -8,8 +8,12 @@ async function getPresentationData () {
     let template = {}
     template.config = await fsPromises.readFile(path.join(accessPath, "config.json"), "utf8");
     template.style = await fsPromises.readFile(path.join(accessPath, "style.css"), "utf8");
-    template.env = await fsPromises.readFile(path.join(path.join(accessPath, "env"), "index.js"), "utf8");
     const assets = await fsPromises.readdir(path.join(accessPath, "assets"), "utf8");
+    const envs = await fsPromises.readdir(path.join(accessPath, "env"), "utf8");
+    template.envs = []
+    for (const env of envs) {
+        template.envs.push({accessPath: 'node '+ env, code: await fsPromises.readFile(path.join(path.join(accessPath, "env"), env), "utf8")})
+    }
     template.assets = {}
     template.assets.js = []
     template.assets.css = []
@@ -47,6 +51,7 @@ async function getPresentationData () {
             }
         }
     }
+
     template.presentation = template.presentation.split("\n---\n");
     return template
 }

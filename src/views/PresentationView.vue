@@ -31,12 +31,14 @@ export default {
     this.presentationData = await this.getPresentationData();
     this.slideData = this.presentationData.presentation;
     this.injectStyle(this.presentationData.style)
-    this.injectScript(this.presentationData.env)
+    //this.injectScript(this.presentationData.env)
 
     setTimeout(() => {
       document.querySelectorAll('pre code').forEach(el => {
         hljs.highlightElement(el);
       })
+
+      this.checkInjectButton()
 
     }, 500)
   },
@@ -57,6 +59,20 @@ export default {
         this.activeSlider++;
       }
     },
+    checkInjectButton(){
+        for (const script of this.presentationData.envs) {
+          for (const elem of document.querySelectorAll('pre code.language-bash')) {
+            if (elem.innerText.includes(script.accessPath)) {
+              let button = document.createElement("button");
+              button.innerHTML = "executer";
+              elem.appendChild(button);
+              button.addEventListener("click", function () {
+                  this.injectScript(script.code)
+              }.bind(this));
+            }
+          }
+        }
+    },
     injectStyle(styles){
       const style = document.createElement("style");
       style.innerText = styles
@@ -66,6 +82,15 @@ export default {
       const script = document.createElement("script");
       script.innerText = scripts
       document.head.appendChild(script)
+    },
+    randomCharacter(length) {
+      var result           = '';
+      var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+      var charactersLength = characters.length;
+      for ( var i = 0; i < length; i++ ) {
+        result += characters.charAt(Math.floor(Math.random() * charactersLength));
+      }
+      return result;
     }
   },
 };
