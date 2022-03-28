@@ -16,7 +16,7 @@ async function getPresentationData () {
     template.assets.images = []
     for (const item of assets) {
         if (item.endsWith(".js")) {
-            template.assets.js.push(await fsPromises.readFile(path.join(accessPath, "assets", item), "utf8"))
+            template.assets.js.push({accessPath: './assets/' + item, code: await fsPromises.readFile(path.join(accessPath, "assets", item), "utf8")})
         }else if(item.endsWith(".css")){
             template.assets.css.push(await fsPromises.readFile(path.join(accessPath, "assets", item), "utf8"))
         }else {
@@ -26,6 +26,26 @@ async function getPresentationData () {
     template.presentation = await fsPromises.readFile(path.join(accessPath, "presentation.md"), "utf8");
     for (const image of template.assets.images) {
         template.presentation = template.presentation.replace(image.accessPath, ('data:image/jpeg;base64,' + image.img))
+    }
+    for (let line of template.presentation.split('\n')) {
+        for (const script of template.assets.js) {
+            if (line.includes(script.accessPath)){
+                if (line.includes('#')){
+                   let startEnd = line.split('#')[1].replace(')', '')
+                   const start = startEnd.split('-')[0]
+                   const end = startEnd.split('-')[1]
+                   let code = ""
+                   for (const key in script.code.split('\n')) {
+                       if ((key) >= (start-1) && key <= (end-1)){
+                           code+= script.code.split('\n')[key] + '\n'
+                       }
+                   }
+
+                   template.presentation = template.presentation.replace(line, ('```js\n' + code + '```'))
+                }
+                
+            }
+        }
     }
     template.presentation = template.presentation.split("\n---\n");
     return template
